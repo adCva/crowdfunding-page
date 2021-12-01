@@ -1,38 +1,139 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+
+  --bg-color: #fafafa;
+  --header-text-color: #111111;
+  --paragraph-text-color: #7a7a7a;
+  --btn-bg-color: #3cb4ac;
+  --btn-bg-hover-color: #147b74;
+  --card-bg-color: #ffffff;
+  --card-border-color: #d8d8d8;
+
+
+
+  --disabled-btn-bg-color: #c7e4e2;
+  --disabled-paragraph-text-color: #c9c9c9;
+  --disabled-header-text-color: #a1a1a1;
+  --disabled-card-border-color: #f5f5f5;
+
+  --card-border-radius: 10px;
+  --card-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  
+  
+  --ff-main: 'Commissioner', sans-serif;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+
+html {
+  font-family: var(--ff-main);
+  font-weight: var(--fw-regular);
+  font-size: 16px;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body {
+  position: relative;
+  background-color: var(--bg-color);
+  color: var(--paragraph-text-color);
+}
+
+
+header {
+  height: 280px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("./Assets/image-hero-mobile.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+main {
+  width: min(90%, 700px);
+  margin: -9rem auto 5rem;
+  position: relative;
+}
+
+
+@media (min-width: 500px) {
+  header {
+    height: 200px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@media (min-width: 768px) {
+  header {
+    height: 350px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("./Assets/image-hero-desktop.jpg");
+  }
 }
 
-.App-link {
-  color: #61dafb;
+@media (min-width: 1200px) {
+  header {
+    height: 450px;
+  }
+
+  main {
+    margin: -14rem auto 6rem;
+  }
 }
 
-@keyframes App-logo-spin {
+
+
+
+
+
+/* ============================== Animations ============================== */
+@keyframes mobileMenu {
+  from{
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes titleCard {
   from {
-    transform: rotate(0deg);
+    opacity: 0.5;
+    transform: translateY(50%);
+  } to {
+    opacity: 1;
+    transform: translateY(0%);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@keyframes statsCard {
+  from {
+    opacity: 0;
+    transform: translateY(70%);
+  } to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes aboutCard {
+  from {
+    opacity: 0;
+    transform: translateY(90%);
+  } to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes pledgeCard {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  } to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
