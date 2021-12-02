@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { NavWrapper, PageLogo, MobileOpenMenu, MobileCloseMenu, NavMenuContainer, NavMenu, NavLink } from "./NavStyle";
+import { NavWrapper, PageLogo, MobileOpenMenu, MobileCloseMenu, NavMenuContainer, NavMenu, NavLink, NavLinkPopUp } from "./NavStyle";
 
 // Redux.
 import { useDispatch } from 'react-redux';
-import { showProjectImages } from "../../Features/pledgeSlice";
+import { createNewPledgeWithoutThanks, showProjectImages } from "../../Features/pledgeSlice";
+
+
 
 
 function Nav() {
@@ -13,6 +15,7 @@ function Nav() {
     // Local state.
     const [ mobileMenuOpened, setMobileMenuOpened ] = useState(false);
     const mobileMenuRef = useRef();
+
 
     // Open mobile menu.
     const openMenu = () => {
@@ -26,19 +29,17 @@ function Nav() {
     };
 
 
-
     // Display images popUp.
     const displayImagesPopUp = () => {
+        setMobileMenuOpened(false);
         dispatch(showProjectImages());
     }
 
 
-    // Link click message.
-    const messageClick = () => {
-        alert("This link does nothing.");
+    // Link click close menu.
+    const closeMobileMenuOnLinkClick = () => {
         setMobileMenuOpened(false);
     };
-
 
 
     // Close mobile menu on outside click.
@@ -57,6 +58,14 @@ function Nav() {
     });
 
 
+    // On Discover link click.
+    const startNewPledge = () => {
+        dispatch(createNewPledgeWithoutThanks());
+        setMobileMenuOpened(false);
+    }
+
+
+
 
 
     
@@ -67,10 +76,10 @@ function Nav() {
             <MobileCloseMenu isVisible={mobileMenuOpened} onClick={closeMenu} src="./images/icon-close-menu.svg" alt="Close Menu" />
             <NavMenuContainer isVisible={mobileMenuOpened}>
                 <NavMenu isVisible={mobileMenuOpened} ref={mobileMenuRef}>
-                    <NavLink onClick={() => messageClick()}>About</NavLink>
-                    <NavLink onClick={() => messageClick()}>Discover</NavLink>
-                    <NavLink onClick={() => messageClick()}>Get Started</NavLink>                  
-                    <NavLink onClick={()=> displayImagesPopUp()}>See Project</NavLink>                  
+                    <NavLink to='about' smooth={true} duration={500} spy={true} exact='true' offset={-80} onClick={closeMobileMenuOnLinkClick}>About</NavLink>
+                    <NavLink to='discover' smooth={true} duration={500} spy={true} exact='true' offset={-80} onClick={closeMobileMenuOnLinkClick}>Discover</NavLink>
+                    <NavLinkPopUp onClick={startNewPledge}>Get Started</NavLinkPopUp>                  
+                    <NavLinkPopUp onClick={displayImagesPopUp}>See Project</NavLinkPopUp>                  
                 </NavMenu>
             </NavMenuContainer>    
         </NavWrapper>

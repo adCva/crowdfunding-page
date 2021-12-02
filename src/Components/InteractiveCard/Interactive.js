@@ -34,9 +34,9 @@ function Interactive(props) {
     const submitBtn = (event) => {
         event.preventDefault();
 
-        if (pledgeInteractiveValue < pledgeInitialValue) {
+        if (Number(pledgeInteractiveValue) < Number(pledgeInitialValue)) {
             alert(`C'mon man (in Joe Biden's voice.). The package value can't be lower than ${pledgeInitialValue}`);
-        } else if (pledgeInteractiveValue < 1) {
+        } else if (Number(pledgeInteractiveValue) < 1) {
             alert("C'mon man (in Joe Biden's voice.). The value can't be lower than 1.");
         } else {
             dispatch(backProject({depositAmout: pledgeInteractiveValue}));

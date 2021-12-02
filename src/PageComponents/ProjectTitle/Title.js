@@ -7,10 +7,11 @@ import { createNewPledge } from "../../Features/pledgeSlice";
 
 
 
+
+
 function Title() {
     // Redux.
     const dispatch = useDispatch();
-
 
     // Local state.
     const [bookmarked, setBookmarked] = useState(false);
@@ -20,14 +21,18 @@ function Title() {
         setBookmarked(!bookmarked);
     };
 
-
+    // Open pledge popUp.
     const startNewPledge = () => {
         dispatch(createNewPledge());
     }
 
 
+
+
+
+
     return (
-        <TitleContainer>
+        <TitleContainer id="discover">
             <TitleLogo src="./images/logo-mastercraft.svg" alt="Mastercraft Logo" />
             <TitleText>
                 <TextH1>Mastercraft Bamboo Monitor Riser</TextH1>

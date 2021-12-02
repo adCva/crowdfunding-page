@@ -2,9 +2,6 @@ import styled from "styled-components";
 
 
 
-
-
-
 export const AboutWrapper = styled.section`
     background-color: var(--card-bg-color);
     padding: 2rem 1.5rem;

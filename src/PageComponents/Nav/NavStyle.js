@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Link as LinkS } from "react-scroll";
 
 
 
@@ -106,7 +106,43 @@ export const NavMenu = styled.div`
 
 
 
-export const NavLink = styled.a`
+export const NavLink = styled(LinkS)`
+    color: var(--header-text-color);
+    font-weight: var(--fw-bold);
+    font-size: 17px;
+    padding: 1.6rem 1.5rem;
+    border-bottom: 1px solid var(--card-border-color);
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+
+    :last-of-type {
+        border-bottom: none; 
+    }
+
+    :hover {
+        transform: translateY(-3px);
+    }
+
+    :focus {
+        transform: translateY(-3px);
+    }
+
+    @media (min-width: 768px) {
+        color: #ffffff;
+        padding: 0;
+        border-bottom: none;
+        margin-right: 2rem;
+
+        :last-of-type {
+            margin-right: 0;
+        }
+    }
+`
+
+
+
+
+export const NavLinkPopUp = styled.a`
     color: var(--header-text-color);
     font-weight: var(--fw-bold);
     font-size: 17px;

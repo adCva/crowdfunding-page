@@ -1,10 +1,9 @@
-import React, { useRef, useEffect } from 'react';
-import { SlideWrapper, SlideContainer, SlideImage, CloseBtn } from "./SlideStyle";
+import React from 'react';
+import { PopUpWrapper, PopUpContainer, SlideImage, PopUpTextContainer, PopUpDesc, CloseBtn } from "./SlideStyle";
 
 // Redux.
 import { useSelector, useDispatch } from 'react-redux';
 import { hideProjectImages } from "../../Features/pledgeSlice";
-
 
 // Swiper.
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -16,15 +15,17 @@ import "./style.css";
 SwiperCore.use([Pagination]);
 
 
+
+
+
+
+
 function Slide() {
     // Redux.
+    const seeDisplayProject = useSelector((state) => state.pledge.displayImagesPopUp);
     const dispatch = useDispatch();
 
-
-    const seeDisplayProject = useSelector((state) => state.pledge.displayImagesPopUp);
-    const sliderRef = useRef();
-
-
+    // Close popUp on button &/or outside click.
     const closePopUp = () => {
         dispatch(hideProjectImages());
     };
@@ -32,16 +33,16 @@ function Slide() {
 
 
 
-
-
     return (
-        <SlideWrapper showDiv={seeDisplayProject}>
-            <SlideContainer>
+        <PopUpWrapper showelement={seeDisplayProject}>
+            <PopUpContainer>
                 <Swiper
                 pagination={{
                     "clickable": true,
                     "className" : "swiper-pagination-bullet"
                 }}
+                observer={true}
+                observeParents={true}
                 spaceBetween={50}
                 slidesPerView={1}
                 >
@@ -52,10 +53,14 @@ function Slide() {
                         <SlideImage src="./images/project-2.jpg" alt="Project Slide"/>
                     </SwiperSlide>
                 </Swiper>
+
+                <PopUpTextContainer>
+                    <PopUpDesc>Whether it’s for work or for leisure activities like video games, your desk setup is sure to have an impact on your performance. These monitor stands are super versatile, improve posture and help reduce eye and neck strain. These monitor stands are sleek, stylish and eco-friendly.</PopUpDesc>
+                </PopUpTextContainer>
                 <CloseBtn onClick={closePopUp}>Close</CloseBtn>
-            </SlideContainer>
-        </SlideWrapper>
+            </PopUpContainer>
+        </PopUpWrapper>
     )
 }
 
-export default Slide
+export default Slide;

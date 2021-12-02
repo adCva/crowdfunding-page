@@ -3,10 +3,7 @@ import styled from "styled-components";
 
 
 
-export const SlideWrapper = styled.section`
-    display: ${({showDiv}) => (showDiv ? "flex" : "none")};
-    justify-content: center;
-    align-items: center;
+export const PopUpWrapper = styled.section`
     background-color: rgba(0, 0, 0, 0.75);
     position: fixed;
     top: 0;
@@ -14,49 +11,69 @@ export const SlideWrapper = styled.section`
     bottom: 0;
     left: 0;
     z-index: 999;
+    display: ${({showelement}) => (showelement ? "flex" : "none")};
+    justify-content: center;
+    align-items: center;
 `
 
 
 
-
-export const SlideContainer = styled.div`
+export const PopUpContainer = styled.div`
     width: min(90%, 700px);
-    background-color: var(--card-bg-color);
-    width: min(90%, 700px);
-    padding-bottom: 1rem;
-    border-radius: var(--card-border-radius);
     max-height: 90vh;
-    overflow-y: scroll !important;
     text-align: center;
+    background-color: var(--card-bg-color);
+    border-radius: var(--card-border-radius);
+    overflow-y: scroll !important;
+    animation: mobileMenu 0.3s ease-in-out;
 
-    @media (orientation: landscape) {
-        padding: 1rem;
-    }
-
-    @media (min-width: 360px) {
-        padding-bottom: 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-        overflow-y: hidden !important;
-        padding: 2rem 1.5rem 1.5rem;
+    // Hide scrollbar.
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+        display: none;
     }
 `
 
 
 
 export const SlideImage = styled.img`
+    border-top-left-radius: var(--card-border-radius);
+    border-top-right-radius: var(--card-border-radius);
     width: 100%;
-    border-radius: var(--card-border-radius);
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 
     @media (orientation: landscape) {
-        width: 60%;
+        height: 300px;
     }
 
     @media (min-width: 768px) {
-        width: 100%;
-        height: auto;
+        height: 400px;
+    }
+`
+
+
+
+
+export const PopUpTextContainer = styled.div`
+    padding: 0 1rem 0;
+    text-align: left;
+
+    @media (min-width: 768px) {
+        padding: 2rem;
+    }
+`
+
+
+
+
+
+export const PopUpDesc = styled.p`
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 1rem 0 2rem;
+
+    @media (min-width: 768px) {
+        margin: 0;
     }
 `
 
@@ -64,32 +81,32 @@ export const SlideImage = styled.img`
 
 
 export const CloseBtn = styled.button`
-    border: none;
-    border-radius: 50px;
+    margin-bottom: 1rem;
+    border: 1px solid var(--header-text-color);
+    border-radius: 10px;
     outline: none;
-    background-color: var(--header-text-color);
-    color: var(--bg-color);
+    background-color: transparent;
+    color: var(--header-text-color);
     font-weight: var(--fw-bold);
     letter-spacing: 0.8px;
+    text-decoration: underline;
     padding: 0.7rem 1.8rem;
     cursor: pointer;
     transition: all 0.25s ease-in-out;
-    margin-top: 1rem;
-    
+
     :hover {
-        background-color: var(--btn-bg-hover-color);
+        background-color: var(--header-text-color);
+        color: var(--card-bg-color);
+        text-decoration: none;
     }
 
     :focus {
-        background-color: var(--btn-bg-hover-color);
-    }
-
-    @media (orientation: landscape) {
-        margin-top: 0;
+        background-color: var(--header-text-color);
+        color: var(--card-bg-color);
+        text-decoration: none;
     }
 
     @media (min-width: 768px) {
-        margin-top: 1rem;
-        padding: 0.8rem 1.8rem;
+        margin-bottom: 1.5rem;
     }
 `

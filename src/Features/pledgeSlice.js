@@ -19,6 +19,14 @@ export const pledgeSlice = createSlice({
             state.openPledge = true
         },
 
+        createNewPledgeWithoutThanks: (state) => {
+            return {
+                ...state,
+                openPledge: true,
+                thanksMessage: false,
+            }
+        },
+
         createPledgeFromDescriptive: (state, action) => {
             let selectedPledge = action.payload.package;
 
@@ -86,6 +94,6 @@ export const pledgeSlice = createSlice({
 })
 
 
-export const { createNewPledge, createPledgeFromDescriptive, getOverThanksMessage, closePledge, selectPledgePackage, backProject, backProjectFree, showProjectImages, hideProjectImages } = pledgeSlice.actions;
+export const { createNewPledge, createNewPledgeWithoutThanks, createPledgeFromDescriptive, getOverThanksMessage, closePledge, selectPledgePackage, backProject, backProjectFree, showProjectImages, hideProjectImages } = pledgeSlice.actions;
 
 export default pledgeSlice.reducer;

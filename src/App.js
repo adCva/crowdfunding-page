@@ -1,5 +1,7 @@
 import './Resets.css';
 import './App.css';
+
+// Components.
 import Nav from "./PageComponents/Nav/Nav";
 import Title from "./PageComponents/ProjectTitle/Title";
 import Stats from './PageComponents/ProjectStats/Stats';

@@ -5,12 +5,16 @@ import { StatsContainer, StatsNumbersContainer, ProgressBar } from "./StatsStyle
 import { useSelector } from 'react-redux';
 
 
+
+
 function Stats() {
     // Redux state.
     const totalFunds = useSelector((state) => state.pledge.totalFunds);
     const totalBackers = useSelector((state) => state.pledge.totalBackers);
     const totalProgress = useSelector((state) => state.pledge.totalProgress);
 
+
+    
 
     return (
         <StatsContainer>

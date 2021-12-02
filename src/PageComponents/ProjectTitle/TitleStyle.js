@@ -20,6 +20,7 @@ export const TitleLogo = styled.img`
 
 
 
+
 export const TitleText = styled.div`
     background-color: var(--card-bg-color);
     padding: 3rem 2rem 1.5rem;
